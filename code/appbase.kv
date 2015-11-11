@@ -1,0 +1,196 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+#: import ScrollView kivy.uix.scrollview.ScrollView  
+#: import Spinner kivy.uix.spinner.Spinner
+AppScreenManager:
+    transition: FadeTransition()
+    LoginScreen:
+    ExperimentSelectScreen:
+    StartExperiment:
+    Instructions:
+    Location:
+    DeleteScreen:
+    SendData:
+
+
+<ExperimentSelectScreen>:
+    name:'ExperimentSelectScreen'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        Button:
+            text: 'Create a new Experiment'
+            bold: True
+            font_size:sp(27)
+            on_release: root.call_popup()
+        Button:
+            text: 'Start Experiment'
+            bold: True
+            font_size:sp(27)
+            on_release: root.select_experiment()
+        Button:
+            text: 'Read Instructions'
+            bold: True
+            font_size:sp(27)
+            on_release: app.root.current= 'Instructions'
+        Button:
+            text: 'Delete Experiments'
+            bold: True
+            font_size:sp(27)
+            on_release: app.root.current= 'DeleteScreen'; app.root.get_screen('DeleteScreen').update_file_layout()
+        Button:
+            text:'Send data'
+            bold: True
+            font_size:sp(27)
+            on_release: app.root.current='SendData'; app.root.get_screen('SendData').update_file_layout()
+
+<StartExperiment>:
+    name:'StartExperiment'
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            size_hint: (1, 0.2)
+            cols:2
+            Label:
+                text:'Number of steps \n taken to reach'
+                bold: True
+                font_size:sp(15)
+            TextInput:
+                id: num_of_steps
+                font_size:sp(40)
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 20
+            spacing: 20
+            size_hint: (1, 0.3)
+            BoxLayout:
+                orientation: 'vertical'    
+                Button:
+                    id:start_stop
+                    text: 'Start'
+                    font_size: sp(35)
+                    bold: True
+                    on_press: root.on_start();root.start_stop()
+                Button:
+                    id:reset
+                    text: 'Reset'
+                    font_size: sp(35)
+                    bold: True
+                    on_press: root.reset()
+            Label:
+                id: stopwatch
+                text: '00:00.[size=40]00[/size]'
+                font_size: sp(50)
+                markup: True
+        GridLayout:
+            cols:2
+            size_hint: (1, 0.2)
+            Label:
+                font_size:sp(15)
+                height:100
+                text:'Number of people \n exiting'
+                bold: True
+            
+            Spinner:
+                id: num_of_exit_ppl
+                bold: True
+                font_size:sp(25)
+                text:''
+                values:('5', '10' ,'15' ,'25' ,'30')
+        GridLayout:
+            cols:2
+            size_hint_y: 0.2
+            Label:
+                font_size:sp(25)
+                text:'Position Centre'
+                bold: True
+                font_size:sp(15)
+            Spinner:
+                id: centre
+                bold: True
+                font_size:sp(25)
+                text:'Yes or No'
+                values:('Yes', 'No')
+        GridLayout:
+            cols:2
+            size_hint_y: 0.1
+            Button:
+                text:'Next'
+                font_size:sp(25)
+                on_release: root.save_data();app.root.current= 'Location'
+            Button:
+                text:'Home'
+                font_size:sp(25)
+                on_release: app.root.current= 'ExperimentSelectScreen'
+<Instructions>:
+    name:'Instructions'
+    BoxLayout:
+        orientation:'vertical'
+        Label:
+            size_hint_y: 0.20
+            text:"Instructions"
+            font_size:sp(30)          
+        ScrollLabel:
+            text:root.get_instructions()   
+            font_size:sp(20)
+            halign:'left'
+            markup: True 
+            write_tab: True
+        AnchorLayout:
+            center: root.center
+            size_hint_y: 0.10
+            Button:
+                text:'Okay'
+                on_release: app.root.current= 'ExperimentSelectScreen'
+                font_size:sp(25)           
+<Location>:
+    name:'Location'
+    BoxLayout:
+        orientation:'vertical'          
+        GridLayout:
+            cols:2
+            size_hint_y: 0.3
+            Label:
+                size_hint_x:0.3
+                text:'Select\nMetro\nStation '
+                bold: True
+                font_size:sp(25)
+            Spinner:
+                size_hint_x:0.7
+                id: location
+                bold: True
+                font_size:sp(25)
+                values: root.get_stations()
+        Label:
+            size_hint_y: 0.15
+        GridLayout:
+            cols:2
+            size_hint_y: 0.3
+            Label:
+                text:'Valid'
+                bold: True
+                font_size:sp(25)
+            Spinner:
+                id: valid
+                bold: True
+                font_size:sp(25)
+                text:'Yes or No'
+                values:('Yes', 'No')
+        Label:
+            size_hint_y: 0.15
+        GridLayout:
+            cols:3
+            size_hint_y: 0.1
+            Button:
+                text:'Save Data'
+                font_size:sp(25)
+                on_release: root.save_data();
+       
+            Button:
+                text:'Previous'
+                font_size:sp(25)
+                on_release:app.root.current= 'StartExperiment'
+            Button:
+                text:'Home'
+                font_size:sp(25)
+                on_release: app.root.current= 'ExperimentSelectScreen'
+

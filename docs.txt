@@ -1,0 +1,28 @@
+I) HOME SCREEN:
+	1. Create a new Experiment-> An experiment consists of a set of observations. This will create .csv in your phone's sd-card where data is to be written. It is not necessary to create multiple experiments.
+	2. Start Experiment-> Used to record observations.
+	3. Delete Experiments-> Used to delete experiments. Not recommended to delete experiments unless they are of no use.
+	4. Read Instructions-> Displays these instructions.
+	5. Send Data-> Uploads the experiment(requires internet connection). Not recommended to upload duplicate data. Upload data only when specified.
+
+II) PERFORMING EXPERIMENT:
+A pre-requisite for collecting data is that the subway must be densely crowded. 
+	a.) Entering the subway:
+		i. Guidelines:
+			1. Enter a subway and walk in a straight line to a given point in the subway. Enter the number of steps taken to reach that point, in the app. Steps should be of same length while entering the subway.
+			2. Enter whether standing in the center of the train or not. The center of the train is defined as the region in front of door.
+		ii. Precautions:
+			1. While in the subway train, make your movement as minimum as possible. If unavoidable return to original position when starting to exit.
+			2. Don't take into observation, short steps like rotating to fix direction while standing still.
+	b.)Exiting the subway:
+		i. Guidelines:
+			1. Start the timer as soon as the door opens.
+			2. Check number of people exiting the train. Approximate it to a discrete value 5, 10, 20, 30.
+			3. Select the metro station from the list at which you exited.
+			4. Finally save data and go back to home screen.
+		ii. Precautions:
+			1. Stop timer as soon you reach outside.
+
+Contact in case of an issue:
+email:abhigenie92@gmail.com
+
