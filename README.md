@@ -1,6 +1,6 @@
 # subway_experiment_android_app
 ============================
-Android application for studying collective behavior in high density subway crowds.
+Cross-platform application for studying collective behavior in high density subway crowds.
 We are doing an experiment to study dense crowds in subway stations. Please install the app on your phone using the .apk file. It is highly recommended that you go through the docs (attached and in app) thoroughly before performing the experiments. 
 
 
